@@ -7,7 +7,6 @@ Bureaucrat::Bureaucrat() : _name("unknown"), _grade(150)
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
 {
- 
     if (grade > 150)
         throw GradeTooLowException();
     else if (grade < 1)
@@ -60,11 +59,23 @@ void Bureaucrat::gradeInc()
 
 void Bureaucrat::gradeDec()
 {
-    if(_grade == 150)
+   if(_grade == 150)
     {
         throw GradeTooHighException();
     }
     ++_grade;
+}
+
+void Bureaucrat::signForm(Form &t)
+{
+    try
+    {
+		std::cout << _name << " signed " << t.getNameForm() << std::endl;
+	} catch (const std::exception& e)
+    {
+		std::cout   << _name << " couldn't sign " << t.getNameForm()
+                    << " because " << e.what() << std::endl;
+	}
 }
 
 std::ostream & operator << (std::ostream &o,Bureaucrat &c)

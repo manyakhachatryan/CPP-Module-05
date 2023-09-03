@@ -2,6 +2,9 @@
 #define  BUREAUCRAT_HPP   
 
 #include <iostream>
+#include "Form.hpp"
+
+class Form;
 
 class Bureaucrat
 {
@@ -15,6 +18,7 @@ class Bureaucrat
         int getGrade();
         void gradeInc();
         void gradeDec();
+        void signForm(Form& t);
     private:
         const std::string _name;
         int               _grade;
@@ -35,7 +39,6 @@ class Bureaucrat
                 return "Exception: The lower score is 150";
             }
     };
-
 };
 
 std::ostream& operator << (std::ostream &o, Bureaucrat &c);

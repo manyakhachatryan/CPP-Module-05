@@ -4,7 +4,7 @@ int main()
 {
     try
     {
-      Bureaucrat a("manykhac", 151);
+      Bureaucrat a("manykhac", 15);
       a.gradeInc();
       a.gradeDec();
       std::cout<<a<<std::endl;
