@@ -19,7 +19,22 @@ class Bureaucrat
         const std::string _name;
         int               _grade;
 
-    // class 
+    class GradeTooHighException : public std::exception
+    {
+        public:
+            const char * what () const throw() 
+            {
+                return "Exception: The higher score is 150";
+            }
+    };
+
+    class GradeTooLowException : public std::exception{
+        public:
+            const char * what () const throw() 
+            {
+                return "Exception: The lower score is 0";
+            }
+    };
 
 };
 

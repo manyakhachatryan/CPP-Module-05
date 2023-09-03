@@ -1,28 +1,40 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : _name("unknown")
+Bureaucrat::Bureaucrat() : _name("unknown"), _grade(150)
 {
-    
+    std::cout<<"Default constructor called - Bureaucrat"<<std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name),  _grade(grade)
+Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
 {
-    
+ 
+    if (grade < 0)
+        throw GradeTooLowException();
+    else if (grade > 150)
+        throw GradeTooHighException();
+    else
+        _grade = grade;
+    std::cout<<"Parameterized constructor called - Bureaucrat"<<std::endl;
 }
 
 Bureaucrat::~Bureaucrat()
 {
-    
+    std::cout<<"Destructor called - Bureaucrat"<<std::endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat& t)
+Bureaucrat::Bureaucrat(const Bureaucrat& t) : _name(t._name), _grade(t._grade)
 {
-    _name = t._name;
-    // _grade = t._grade;
+    std::cout<<"Copy constructor called - Bureaucrat"<<std::endl;
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& t)
 {
+    if (this != &t)
+    {
+        _grade = t._grade;
+        const_cast<std::string&>(_name) = t._name;
+    }
+    std::cout<<"Copy assignment operator called - Bureaucrat "<<std::endl;
     return *this;
     
 }
@@ -39,10 +51,19 @@ int Bureaucrat::getGrade()
 
 void Bureaucrat::gradeInc()
 {
+    if(_grade == 150)
+    {
+        throw GradeTooHighException();
+    }
     ++_grade;
 }
+
 void Bureaucrat::gradeDec()
 {
+    if(_grade == 0)
+    {
+        throw GradeTooHighException();
+    }
     --_grade;
 }
 

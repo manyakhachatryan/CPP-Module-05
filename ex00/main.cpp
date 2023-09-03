@@ -2,12 +2,16 @@
 
 int main()
 {
-    Bureaucrat a("many", 20);
-   
-    // std::cout<<a.getName()<<std::endl;
-    // std::cout<<a.getGrade()<<std::endl;
-    a.gradeInc();
-    std::cout<<a<<std::endl;
- 
+    try
+    {
+      Bureaucrat a("manykhac", 151);
+      a.gradeInc();
+      a.gradeDec();
+      std::cout<<a<<std::endl;
+    }
+    catch(const std::exception& e)
+    {
+      std::cerr <<e.what() << '\n';
+    }
     return (0);
 }
