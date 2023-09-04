@@ -1,30 +1,30 @@
-#include "Form.hpp"
+#include "AForm.hpp"
 
-Form::Form(): _nameForm("unknown"), _signGrade(0), _executeGrade(0)
+AForm::AForm(): _nameForm("unknown"), _signGrade(0), _executeGrade(0)
 {
     _sign = false;
     std::cout<<"Default constructor called - Form"<<std::endl;
 }
 
-Form::Form(std::string name, int num1, int num2): _nameForm(name), _signGrade(num1), _executeGrade(num2)
+AForm::AForm(std::string name, int num1, int num2): _nameForm(name), _signGrade(num1), _executeGrade(num2)
 {
     _sign = false;
     std::cout<<"Parameterized constructor called - Form"<<std::endl;
 }
 
-Form::~Form()
+AForm::~AForm()
 {
     std::cout<<"Destructor called - Form"<<std::endl;
 }
 
 
-Form::Form(const Form& t) : _nameForm(t._nameForm), _signGrade(t._signGrade), _executeGrade(t._executeGrade)
+AForm::AForm(const AForm& t) : _nameForm(t._nameForm), _signGrade(t._signGrade), _executeGrade(t._executeGrade)
 {
     _sign = t._sign;
     std::cout<<"Copy constructor called - Form"<<std::endl;
 }
 
-Form& Form::operator=(const Form& t)
+AForm& AForm::operator=(const AForm& t)
 {
     if (this != &t)
     {
@@ -37,28 +37,28 @@ Form& Form::operator=(const Form& t)
     return *this;
 }
 
-const std::string Form::getNameForm()
+const std::string AForm::getNameForm()  const
 {
     return _nameForm;
 }
 
-bool Form::getSign()
+bool AForm::getSign() const
 {
     return _sign;
 }
 
-int Form::getSignGrade()
+int AForm::getSignGrade()
 {
     return _signGrade;
 }
 
-int Form::getExecuteGrade()
+int AForm::getExecuteGrade() const
 {
     return _executeGrade;
 }
 
 
-void Form::beSigned(Bureaucrat &t)
+void AForm::beSigned(Bureaucrat &t)
 {
    
     if (t.getGrade() <= _signGrade)
@@ -77,7 +77,7 @@ void Form::beSigned(Bureaucrat &t)
         throw GradeTooLowException();      
 }
 
-std::ostream& operator << (std::ostream &o, Form &c)
+std::ostream& operator << (std::ostream &o, AForm &c)
 {
     std::cout<<"---------------------------------------------"<<std::endl;
     std::cout<<"Form name     : "<<c.getNameForm()<<std::endl;
