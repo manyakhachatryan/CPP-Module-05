@@ -99,6 +99,7 @@ std::ostream & operator << (std::ostream &o,Bureaucrat &c)
     return o;
 }
 
+
 const char * Bureaucrat::GradeTooHighException::what () const throw()
 {
     return "Exception: The higher score is 1";

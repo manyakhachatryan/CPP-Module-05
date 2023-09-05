@@ -5,7 +5,7 @@ int main()
 {
     try
     {
-      Bureaucrat a("manykhac", 1);
+      Bureaucrat a("manykhac", 3);
       Form b;
       Form c("form1", 5, 5);
       Form d(c);

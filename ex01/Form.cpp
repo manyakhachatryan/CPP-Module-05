@@ -87,3 +87,13 @@ std::ostream& operator << (std::ostream &o, Form &c)
     std::cout<<"---------------------------------------------";
     return o;
 }
+
+const char * Form::GradeTooHighException::what () const throw()
+{
+    return "Exception: The higher score is 1";
+}
+
+const char * Form::GradeTooLowException::what () const throw()
+{
+    return "Exception: The form's Sign Grade is higher than Bureaucrat's grade ";
+}

@@ -31,7 +31,6 @@ class AForm
     {
          public:
             const char * what () const throw();
-
     };
 
     class NoSigned : public std::exception
@@ -39,6 +38,17 @@ class AForm
          public:
             const char * what () const throw();
     };
+
+
+    class UnknownTypeException :  public std::exception
+    {
+         public:
+            const char * what () const throw() 
+            {
+                return "Unknown Type";
+            }
+    };
+
     private:
         const std::string   _nameForm;
         bool                _sign;

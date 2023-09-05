@@ -62,7 +62,7 @@ void Bureaucrat::gradeDec()
 {
     if(_grade == 150)
     {
-        throw GradeTooHighException();
+        throw GradeTooLowException();
     }
     ++_grade;
 }
@@ -71,4 +71,14 @@ std::ostream & operator << (std::ostream &o,Bureaucrat &c)
 {
     std::cout<<c.getName()<<", bureaucrat grade "<<c.getGrade()<<".";
     return o;
+}
+
+const char * Bureaucrat::GradeTooHighException::what () const throw()
+{
+    return "Exception: The higher score is 1";
+}
+
+const char * Bureaucrat::GradeTooLowException::what () const throw()
+{
+    return "Exception: The lower score is 150";
 }
